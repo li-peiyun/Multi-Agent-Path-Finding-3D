@@ -22,18 +22,43 @@ public class PyRun : MonoBehaviour
     {
         Kill_All_Python_Process();
 
+        // 创建与cbs程序的通信
+        EstablishPythonCommunication("Python/cbs/cbs.py", 31415, "cbs");
+
+        // 创建与primal程序的通信
+        EstablishPythonCommunication("Python/primal/mapgenerator.py", 31416, "primal");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // 按下C键，向"cbs.py"发送识别指令
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SendMessageToPython("Recognizing", 31415); // 发送消息到cbs.py的端口号31415
+        }
+
+        // 按下P键，向"mapgenerator.py"发送识别指令
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SendMessageToPython("Recognizing", 31416); // 发送消息到mapgenerator.py的端口号31416
+        }
+    }
+
+    // private function
+    private void EstablishPythonCommunication(string pythonPath, int port, string env)
+    {
         // 创建UDP通信的Client
         udpClient = new UdpClient();
         // 设置IP地址与端口号
-        remoteEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 31415);
+        remoteEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
 
-        string pythonPath = "Python/cbs/cbs.py";
         // 获取Unity项目的数据路径
         string dataPath = Application.dataPath;
         // 拼接Python文件的完整路径
         string fullPath = dataPath + "/" + pythonPath;
         // 设置命令行参数
-        string command = "/c activate mapf & python \"" + fullPath + "\"";
+        string command = $"/c activate {env} & python \"{fullPath}\"";
 
         // 创建ProcessStartInfo对象
         startInfo = new ProcessStartInfo();
@@ -60,20 +85,17 @@ public class PyRun : MonoBehaviour
         process.Start();
         process.BeginErrorReadLine();
         process.BeginOutputReadLine();
-
     }
 
-    // Update is called once per frame
-    void Update()
+    void SendMessageToPython(string message, int port)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //向Python发送识别指令
-            byte[] message = Encoding.ASCII.GetBytes("Recognizing");
-            udpClient.Send(message, message.Length, remoteEP);
-            UnityEngine.Debug.Log("Sent message: " + Encoding.ASCII.GetString(message));
-        }
+        // 创建消息内容的字节数组
+        byte[] messageBytes = Encoding.ASCII.GetBytes(message);
+        // 发送消息到指定端口
+        udpClient.Send(messageBytes, messageBytes.Length, new IPEndPoint(IPAddress.Parse("127.0.0.1"), port));
+        UnityEngine.Debug.Log("Sent message: " + message);
     }
+
     private void OnOutputDataReceived(object sender, DataReceivedEventArgs e)
     {
         if (!string.IsNullOrEmpty(e.Data))
