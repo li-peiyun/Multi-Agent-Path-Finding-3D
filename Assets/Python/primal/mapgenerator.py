@@ -241,7 +241,7 @@ def main():
 
 
 HOST = '127.0.0.1'
-PORT = 31416
+PORT = 31417
 with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
     s.bind((HOST, PORT))
     print('Listening on', (HOST, PORT))
@@ -249,7 +249,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
 
     while True:
         sys.stdout.flush()
-        data, addr = s.recvfrom(1024)
+        data, addr = s.recvfrom(2048)
         if data.decode() == "Recognizing":
             # 执行primal程序
             main()

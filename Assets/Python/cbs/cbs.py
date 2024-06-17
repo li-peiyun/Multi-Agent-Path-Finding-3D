@@ -420,7 +420,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
 
     while True:
         sys.stdout.flush()
-        data, addr = s.recvfrom(1024)
+        data, addr = s.recvfrom(2048)
         if data.decode() == "Recognizing":
             # 执行mapf程序
             main()
