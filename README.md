@@ -67,19 +67,13 @@
 
 ![move](./result/animation/move.gif)
 
-![img](https://vvi5f2s0tcx.feishu.cn/space/api/box/stream/download/asynccode/?code=MDAwYWIyNzQ5MjI4NGY2NGRkODllNWM4ZjVhNjdiZDZfbnhtMlZZVzNMcmlQZDBHSGtGalh5WGs1aVpEQW1kUnlfVG9rZW46S3N4QWJJaFZ0bzc0NTV4UG0yMmN2am1GbnhkXzE3MTg2MTU0OTY6MTcxODYxOTA5Nl9WNA)
-
 - 小车拿取货物
 
 ![pickup](./result/animation/pickup.gif)
 
-![img](https://vvi5f2s0tcx.feishu.cn/space/api/box/stream/download/asynccode/?code=NjBkYjUxYWI4ZDk0YTNkYmQxM2JiZmNmNjhhYTM1NWFfRUVVTU90d2V6bHRhbjVHWUszWHNnOHprUENzbmpvT0FfVG9rZW46T3BTb2JlSjgzbzFZREJ4UGpTZGM3ZHFYbkVkXzE3MTg2MTU0OTY6MTcxODYxOTA5Nl9WNA)
-
 - 小车卸货
 
 ![unload](./result/animation/unload.gif)
-
-![img](https://vvi5f2s0tcx.feishu.cn/space/api/box/stream/download/asynccode/?code=Y2Q3NTczZTgyZGIyN2EzNjM4ZDFhOWNlMjMxNzZmNjZfYWNRZzB4b1FwY2NnRFZYOHcxQmlVcmphTHp2SnFQNG1fVG9rZW46TjZvTGJMZEJsb2xoZmx4NXFhN2NHdlpMbmxnXzE3MTg2MTU0OTY6MTcxODYxOTA5Nl9WNA)
 
 ## 三、MAPF算法
 
