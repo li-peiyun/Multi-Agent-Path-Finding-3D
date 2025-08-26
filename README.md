@@ -42,10 +42,15 @@ The 3D warehouse environment includes **AGVs, racks, goods, and obstacles**. Mul
 The simulation supports dynamic AGV actions:
 
 - **Movement**
+  
    ![move](./result/animation/move.gif)
+
 - **Pickup**
+  
    ![pickup](./result/animation/pickup.gif)
+
 - **Unload**
+  
    ![unload](./result/animation/unload.gif)
 
 ------
